@@ -1180,7 +1180,7 @@ footer a:hover {
 
   .site-head .menu-btn {
     top: auto;
-    bottom: 0;
+    bottom: 10px;
   }
 
   .jaapi {
