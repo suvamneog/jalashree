@@ -296,13 +296,14 @@ p {
 }
 
 .banner.gate img {
-  height: 520px;
-  object-position: center 12%;
+  height: 280px;
+  object-position: center 18%;
 }
 
 .banner.photo img {
-  height: auto;
-  object-fit: contain;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
 }
 
 main {
@@ -373,6 +374,12 @@ h2.section {
 .plain img {
   width: 100%;
   height: auto;
+}
+
+.plain.small img {
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .frame img {
@@ -489,8 +496,7 @@ button.plan:hover {
   margin-top: 18px;
 }
 
-.split img,
-.gallery img {
+.split img {
   width: 100%;
   height: 320px;
   object-fit: cover;
@@ -498,11 +504,47 @@ button.plan:hover {
 
 .gallery {
   list-style: none;
-  margin: 0;
+  margin: 18px 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 22px;
+}
+
+.gallery figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: #fbf6ee;
+}
+
+.gallery figure::before,
+.gallery figure::after {
+  content: "";
+  display: block;
+  height: 18px;
+  background: #fff url("images/gamosa.png") center / auto 18px repeat-x;
+}
+
+.gallery .shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  margin: 14px 14px 0;
+  background: #f3eee4;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gallery figcaption {
+  margin: 0;
+  padding: 10px 14px 14px;
+  text-align: center;
 }
 
 .address {
@@ -752,8 +794,10 @@ footer .links a:hover {
   }
 
   .banner img,
-  .banner.gate img {
-    height: 240px;
+  .banner.gate img,
+  .banner.photo img,
+  .plain.small img {
+    height: 200px;
   }
 
   .cards.look {
@@ -783,6 +827,10 @@ footer .links a:hover {
   .split,
   .gallery {
     grid-template-columns: 1fr;
+  }
+
+  .gallery .shot {
+    height: 200px;
   }
 }
 
