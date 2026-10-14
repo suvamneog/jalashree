@@ -101,6 +101,18 @@ p {
   top: 8px;
 }
 
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .wrap {
   width: min(var(--page), calc(100% - 32px));
   margin-inline: auto;
@@ -292,6 +304,11 @@ main {
   width: min(var(--page), calc(100% - 32px));
   margin: 0 auto;
   padding: 22px 0 40px;
+}
+
+main.home {
+  width: 100%;
+  padding: 0;
 }
 
 h1.page {
