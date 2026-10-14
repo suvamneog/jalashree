@@ -7,6 +7,7 @@
     if (!btn || !nav) return;
     btn.setAttribute("aria-expanded", open ? "true" : "false");
     nav.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
   }
 
   if (btn && nav) {
@@ -19,11 +20,22 @@
       }
     });
 
+    document.addEventListener("click", function (event) {
+      if (btn.getAttribute("aria-expanded") !== "true") return;
+      if (nav.contains(event.target) || btn.contains(event.target)) return;
+      setMenu(false);
+    });
+
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
         setMenu(false);
         btn.focus();
       }
+    });
+
+    const wide = window.matchMedia("(min-width: 900px)");
+    wide.addEventListener("change", function (event) {
+      if (event.matches) setMenu(false);
     });
   }
 

@@ -120,9 +120,9 @@ p {
 
 .topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   padding: 8px 16px;
   background: var(--red);
   color: #fff;
@@ -132,6 +132,7 @@ p {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: auto;
 }
 
 .topbar .menu-btn {
@@ -147,6 +148,17 @@ p {
   color: #fff;
   font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.topbar .social {
+  justify-content: center;
+  width: 36px;
+  flex: 0 0 auto;
+}
+
+.topbar .social:hover {
+  color: #f3e4e4;
 }
 
 .topbar .plan {
@@ -582,6 +594,10 @@ button.plan:hover {
   text-align: center;
 }
 
+.gallery.home-picks {
+  display: none;
+}
+
 .address {
   font-size: 20px;
   font-weight: 700;
@@ -840,17 +856,60 @@ footer .links a:hover {
     justify-content: center;
   }
 
+  .topbar {
+    position: relative;
+    z-index: 30;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 19;
+    background: rgba(34, 34, 34, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.32s ease;
+  }
+
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  body.nav-open::before {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   #site-nav {
-    display: none;
-    flex-basis: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding-bottom: 6px;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: min(280px, 82vw);
+    height: 100%;
+    margin: 0;
+    padding: 72px 8px 16px;
+    background: #fff;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.32s ease, visibility 0s linear 0.32s;
   }
 
   #site-nav.is-open {
-    display: flex;
+    transform: translateX(0);
+    visibility: visible;
+    box-shadow: 8px 0 24px rgba(34, 34, 34, 0.12);
+    transition: transform 0.32s ease, visibility 0s linear 0s;
+  }
+
+  #site-nav a {
+    padding: 0 16px;
   }
 
   .banner img,
@@ -904,9 +963,32 @@ footer .links a:hover {
   .gallery .shot {
     height: 200px;
   }
+
+  .gallery.home-picks {
+    display: grid;
+    width: min(100% - 32px, 1100px);
+    margin: 18px auto 28px;
+  }
 }
 
 @media (max-width: 400px) {
+  .topbar {
+    gap: 4px;
+    padding-inline: 8px;
+  }
+
+  .topbar .social {
+    width: 32px;
+  }
+
+  .topbar .menu-btn {
+    padding-inline: 8px;
+  }
+
+  .topbar .plan {
+    padding-inline: 10px;
+  }
+
   .call span {
     position: absolute;
     width: 1px;
