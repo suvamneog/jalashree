@@ -128,7 +128,7 @@ p {
 
 .topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px 18px;
@@ -186,6 +186,28 @@ p {
 }
 
 .topbar .social:hover {
+  background: #f3f3f3;
+  color: #111;
+}
+
+.top-enquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  color: #111;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  transition: background-color var(--move), transform var(--move);
+}
+
+.top-enquire:hover {
   background: #f3f3f3;
   color: #111;
 }
@@ -1180,11 +1202,11 @@ footer a:hover {
 
   .site-head .menu-btn {
     top: auto;
-    bottom: 10px;
+    bottom: 22px;
   }
 
   .jaapi {
-    width: clamp(32px, 6vw, 52px);
+    width: 48px;
     top: 14px;
   }
 
@@ -1206,9 +1228,10 @@ footer a:hover {
 
 @media (max-width: 400px) {
   .brand {
+    max-width: calc(100% - 132px);
     margin-left: 76px;
-    margin-right: 8px;
-    padding: 8px 12px 10px;
+    margin-right: 56px;
+    padding: 8px 10px 10px;
   }
 }
 
@@ -1293,6 +1316,7 @@ footer a:hover {
   }
 
   .topbar .social:hover,
+  .top-enquire:hover,
   .chat:hover {
     transform: translateY(-2px);
   }
