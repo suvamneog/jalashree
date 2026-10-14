@@ -64,6 +64,10 @@ img {
   display: block;
 }
 
+figure {
+  margin: 0;
+}
+
 a {
   color: inherit;
 }
@@ -102,46 +106,88 @@ p {
   margin-inline: auto;
 }
 
-.site-head {
+.topbar {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px 12px;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--red);
+  color: #fff;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar .menu-btn {
+  border-color: #fff;
+  background: transparent;
+  color: #fff;
+}
+
+.topbar a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.topbar .plan {
+  min-height: 36px;
+  padding: 6px 14px;
+  background: #fff;
+  color: var(--red-dark);
+}
+
+.topbar .plan:hover {
+  background: #f3e4e4;
+  color: var(--red-dark);
+}
+
+.site-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: min(var(--page), calc(100% - 32px));
   margin: 0 auto;
-  padding: 8px 0;
+  padding: 14px 0 4px;
 }
 
 .brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-right: auto;
+  text-align: center;
   text-decoration: none;
   color: inherit;
   min-height: 44px;
 }
 
 .brand img {
-  width: 48px;
-  height: 48px;
-  margin: 0;
-  flex: none;
+  width: 76px;
+  height: 76px;
+  margin: 0 0 6px;
 }
 
 .brand-en {
   display: block;
   color: var(--red);
-  font-size: 22px;
+  font-size: 36px;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .brand-sub {
   display: block;
-  margin-top: 1px;
-  font-size: 14px;
-  line-height: 1.2;
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: 1.3;
 }
 
 .head-actions {
@@ -182,6 +228,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0 8px;
 }
 
@@ -201,8 +248,44 @@ p {
 }
 
 .gamosa {
-  height: 28px;
-  background: #fff url("images/gamosa.png") center / auto 28px repeat-x;
+  height: 32px;
+  background: #fff url("images/gamosa.png") center / auto 32px repeat-x;
+}
+
+.banner img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.banner-cap {
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  padding: 22px 20px 24px;
+}
+
+.banner-cap h1,
+.banner-cap strong {
+  display: block;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.banner-cap p,
+.banner-cap span {
+  display: block;
+  margin-top: 4px;
+  font-size: 17px;
+}
+
+.banner.gate img {
+  height: 520px;
+  object-position: center 12%;
 }
 
 main {
@@ -232,6 +315,11 @@ h2.section {
   margin-top: 12px;
 }
 
+.banner-cap + main > .lead:first-child {
+  text-align: center;
+  margin-inline: auto;
+}
+
 .cards + .lead {
   margin-top: 22px;
 }
@@ -251,7 +339,7 @@ h2.section {
 
 .hero img {
   width: 100%;
-  height: 320px;
+  height: 360px;
   object-fit: cover;
   object-position: center 55%;
 }
@@ -334,6 +422,10 @@ button.plan:hover {
   margin-top: 22px;
 }
 
+.cards.look {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .cards a {
   display: block;
   text-decoration: none;
@@ -346,7 +438,7 @@ button.plan:hover {
 
 .cards img {
   width: 100%;
-  height: 220px;
+  height: 280px;
   object-fit: cover;
 }
 
@@ -356,8 +448,12 @@ button.plan:hover {
 }
 
 .cards strong {
-  margin-top: 8px;
-  font-size: 18px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.cards img.top {
+  object-position: center 18%;
 }
 
 .cards a:hover strong {
@@ -374,7 +470,7 @@ button.plan:hover {
 .split img,
 .gallery img {
   width: 100%;
-  height: 240px;
+  height: 320px;
   object-fit: cover;
 }
 
@@ -534,13 +630,15 @@ button.plan:hover {
 }
 
 footer {
-  border-top: 1px solid var(--line);
-  padding: 22px 0 32px;
+  background: var(--red-dark);
+  color: #fff;
+  border-top: 0;
+  padding: 28px 0 36px;
 }
 
 .foot-brand {
-  color: var(--red);
-  font-size: 22px;
+  color: #fff;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.1;
 }
@@ -553,6 +651,7 @@ footer .links {
 }
 
 footer .links a {
+  color: #fff;
   text-decoration: none;
   font-weight: 700;
   min-height: 44px;
@@ -561,7 +660,7 @@ footer .links a {
 }
 
 footer .links a:hover {
-  color: var(--red);
+  text-decoration: underline;
 }
 
 @media (min-width: 900px) {
@@ -569,19 +668,8 @@ footer .links a:hover {
     display: none;
   }
 
-  .brand {
-    order: 0;
-    margin-right: 0;
-  }
-
   #site-nav {
     display: flex;
-    order: 1;
-    margin-left: auto;
-  }
-
-  .head-actions {
-    order: 2;
   }
 }
 
@@ -603,6 +691,29 @@ footer .links a:hover {
 
   #site-nav.is-open {
     display: flex;
+  }
+
+  .banner img,
+  .banner.gate img {
+    height: 240px;
+  }
+
+  .cards.look {
+    grid-template-columns: 1fr;
+  }
+
+  .banner-cap h1,
+  .banner-cap strong {
+    font-size: 24px;
+  }
+
+  .brand img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .brand-en {
+    font-size: 30px;
   }
 
   .hero img,
