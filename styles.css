@@ -166,9 +166,26 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(var(--page), calc(100% - 32px));
+  width: 100%;
   margin: 0 auto;
-  padding: 14px 0 4px;
+  padding: 14px 16px 4px;
+}
+
+.jaapi {
+  position: absolute;
+  top: 18px;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.jaapi-left {
+  left: 16px;
+}
+
+.jaapi-right {
+  right: 16px;
 }
 
 .brand {
@@ -300,6 +317,10 @@ p {
   object-position: center 18%;
 }
 
+.banner.cottage img {
+  object-position: center 72%;
+}
+
 .banner.photo img {
   height: 280px;
   object-fit: cover;
@@ -380,6 +401,20 @@ h2.section {
   height: 280px;
   object-fit: cover;
   object-position: center;
+}
+
+.meal {
+  margin: 18px 0 0;
+}
+
+.meal img {
+  width: min(100%, 280px);
+  height: auto;
+}
+
+.meal figcaption {
+  margin-top: 6px;
+  text-align: right;
 }
 
 .frame img {
@@ -553,12 +588,37 @@ button.plan:hover {
   margin-bottom: 6px;
 }
 
+.place {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 8px 0 16px;
+}
+
+.place figure {
+  margin: 0;
+  height: 320px;
+  background: #111;
+}
+
+.place img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .map-frame {
   width: min(100%, 420px);
   height: 220px;
   margin: 12px 0 8px;
   overflow: hidden;
   border: 1px solid var(--line);
+}
+
+.place .map-frame {
+  width: 100%;
+  height: 320px;
+  margin: 0;
 }
 
 .map-frame iframe {
@@ -818,6 +878,12 @@ footer .links a:hover {
     font-size: 30px;
   }
 
+  .jaapi {
+    width: 40px;
+    height: 40px;
+    top: 14px;
+  }
+
   .hero img,
   .frame img {
     height: 220px;
@@ -825,8 +891,14 @@ footer .links a:hover {
 
   .cards,
   .split,
-  .gallery {
+  .gallery,
+  .place {
     grid-template-columns: 1fr;
+  }
+
+  .place figure,
+  .place .map-frame {
+    height: 240px;
   }
 
   .gallery .shot {
