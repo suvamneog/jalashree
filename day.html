@@ -56,10 +56,21 @@
         <p>Come for the day to fish in the water beside the grounds, or to be on the grounds with family. Enquire ahead so the family can arrange it.</p>
         <p>A meal photographed at the retreat is rice, dal, curry and lime, served on steel plates.</p>
       </div>
-      <h2 class="section">Food menu</h2>
+      <div class="menu-head">
+        <h2 class="section">Food menu</h2>
+        <a class="plan" href="book.html?fishing=1">Enquire about a day visit</a>
+      </div>
       <figure class="menu-sheet">
-        <img src="images/menu.jpeg" width="896" height="1200" alt="Jalashree Anglers Retreat food menu" />
+        <button class="menu-open" type="button" aria-label="Enlarge food menu" aria-haspopup="dialog" aria-controls="menu-view">
+          <img src="images/menu.jpeg" width="896" height="1200" alt="Jalashree Anglers Retreat food menu" />
+        </button>
+        <figcaption>Tap to enlarge</figcaption>
       </figure>
+      <dialog class="menu-view" id="menu-view" aria-label="Food menu">
+        <button class="menu-close" type="button">Close</button>
+        <p class="menu-hint">Tap the picture to zoom</p>
+        <img src="images/menu.jpeg" width="896" height="1200" alt="Jalashree Anglers Retreat food menu" />
+      </dialog>
       <ul class="gallery">
         <li>
           <figure>
@@ -80,7 +91,6 @@
           </figure>
         </li>
       </ul>
-      <p class="action"><a class="plan" href="book.html?fishing=1">Enquire about a day visit</a></p>
     </main>
     <footer>
       <div class="wrap foot-grid">

@@ -39,6 +39,71 @@
     });
   }
 
+  const menuOpen = document.querySelector(".menu-open");
+  const menuView = document.querySelector(".menu-view");
+  if (menuOpen && menuView) {
+    const menuPhoto = menuView.querySelector("img");
+    menuOpen.addEventListener("click", function () {
+      menuView.showModal();
+    });
+    menuView.querySelector(".menu-close").addEventListener("click", function () {
+      menuView.classList.remove("is-zoomed");
+      menuView.close();
+    });
+    menuPhoto.addEventListener("click", function () {
+      menuView.classList.toggle("is-zoomed");
+    });
+    menuView.addEventListener("click", function (event) {
+      if (event.target === menuView) menuView.close();
+    });
+    menuView.addEventListener("close", function () {
+      menuView.classList.remove("is-zoomed");
+    });
+  }
+
+  const shots = document.querySelectorAll(".gallery .shot img");
+  if (shots.length) {
+    const view = document.createElement("dialog");
+    view.className = "menu-view photo-view";
+    view.setAttribute("aria-label", "Photograph");
+    view.innerHTML =
+      '<button class="menu-close" type="button">Close</button><p class="menu-hint">Tap the picture to zoom</p>';
+    document.body.appendChild(view);
+    const photo = document.createElement("img");
+    view.appendChild(photo);
+
+    function showZoom(on) {
+      view.classList.toggle("is-zoomed", on);
+      photo.style.width = on ? (photo.naturalWidth || photo.width) + "px" : "";
+    }
+
+    shots.forEach(function (img) {
+      const open = document.createElement("button");
+      open.type = "button";
+      open.className = "shot-open";
+      open.setAttribute("aria-label", "Enlarge " + (img.alt || "photo"));
+      img.parentNode.insertBefore(open, img);
+      open.appendChild(img);
+      open.addEventListener("click", function () {
+        photo.src = img.currentSrc || img.src;
+        photo.alt = img.alt;
+        showZoom(false);
+        view.showModal();
+      });
+    });
+
+    view.querySelector(".menu-close").addEventListener("click", function () {
+      showZoom(false);
+      view.close();
+    });
+    photo.addEventListener("click", function () {
+      showZoom(!view.classList.contains("is-zoomed"));
+    });
+    view.addEventListener("close", function () {
+      showZoom(false);
+    });
+  }
+
   const form = document.querySelector("#book-form");
   if (!form) return;
 
