@@ -3,49 +3,41 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Book · Jalashree Anglers Retreat</title>
-    <meta name="description" content="Book a tent or fishing at Jalashree Anglers Retreat. Call 98640 50153 or send your details." />
+    <title>Enquire · Jalashree Anglers Retreat</title>
+    <meta name="description" content="Enquire about a stay or a day visit at Jalashree Anglers Retreat. This opens an email you send yourself." />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="images/logo.png" type="image/png" />
   </head>
   <body>
     <a class="skip" href="#content">Skip to content</a>
-    <div class="topbar">
-      <div class="wrap">
-        <p><a href="tel:+919864050153">Call 98640 50153</a></p>
-        <p>Kaliabor, Assam</p>
-      </div>
-    </div>
     <header class="site-head">
       <a class="brand" href="index.html">
         <img src="images/logo.png" width="192" height="192" alt="" />
-        <p class="brand-en">Jalashree</p>
-        <p class="brand-sub">Anglers Retreat</p>
-        <p class="brand-place">কলিয়াবৰ, অসম</p>
+        <span>
+          <span class="brand-en">Jalashree</span>
+          <span class="brand-sub">Anglers Retreat · কলিয়াবৰ</span>
+        </span>
       </a>
-      <div class="wrap nav-row">
-        <nav aria-label="Pages">
-          <a href="index.html">Home</a>
-          <a href="stay.html">Stay</a>
-          <a href="day.html">The day</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="about.html">About</a>
-          <a href="visit.html">Visit</a>
-          <a href="book.html" aria-current="page">Book</a>
-        </nav>
+      <div class="head-actions">
+        <a class="call" href="tel:+919864050153">Call<span>98640 50153</span></a>
+        <a class="plan" href="book.html" aria-current="page">Enquire</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       </div>
+      <nav id="site-nav" aria-label="Pages">
+        <a href="index.html">Home</a>
+        <a href="stay.html">Stay</a>
+        <a href="day.html">Day visits</a>
+        <a href="visit.html">Plan your visit</a>
+      </nav>
     </header>
     <div class="gamosa" role="presentation"></div>
     <main id="content">
-      <p class="crumb"><a href="index.html">Home</a> / Book</p>
-      <h1 class="page">Book</h1>
+      <p class="crumb"><a href="index.html">Home</a> / Enquire</p>
+      <h1 class="page">Enquire</h1>
       <div class="copy">
-        <p>Call, or send your name and the day you want. You can ask for a tent, fishing, or both. The family confirms. This page does not take payment.</p>
+        <p>This is not a booking. Fill in the form, then choose Open email enquiry. That opens your email app with the message written out. You still have to send the email. The family confirms. Nothing is paid on this site.</p>
+        <p>You can also call <a href="tel:+919864050153">98640 50153</a> or <a href="tel:+916002772543">60027 72543</a>.</p>
       </div>
-      <p class="action">
-        <a class="plan" href="tel:+919864050153">Call 98640 50153</a>
-      </p>
-      <p class="copy">The gate sign also lists <a href="tel:+916002772543">60027 72543</a>.</p>
       <form class="book-form" id="book-form">
         <label>
           Name
@@ -64,20 +56,25 @@
           <input name="people" type="number" min="1" inputmode="numeric" />
         </label>
         <fieldset class="choice">
-          <legend>What do you want?</legend>
+          <legend>What is this about?</legend>
           <div class="choices">
-            <label><input name="want" type="checkbox" value="Tent" /> Tent</label>
-            <label><input name="want" type="checkbox" value="Fishing" /> Fishing</label>
+            <label><input name="want" type="checkbox" value="Tent" /> Stay overnight</label>
+            <label><input name="want" type="checkbox" value="Fishing" /> Day visit</label>
           </div>
         </fieldset>
         <label>
           Note
           <textarea name="note" rows="3"></textarea>
         </label>
-        <p class="form-error" id="form-error" hidden>Choose a tent, fishing, or both.</p>
-        <p><button class="plan" type="submit">Send details</button></p>
+        <p class="form-error" id="form-error" hidden>Choose a stay overnight, a day visit, or both.</p>
+        <p><button class="plan" type="submit">Open email enquiry</button></p>
       </form>
-      <p class="sent" id="sent" hidden></p>
+      <div class="draft" id="draft" hidden>
+        <p>If your email app did not open, copy this and send it to <a href="mailto:jalashreeanglersretreat@gmail.com">jalashreeanglersretreat@gmail.com</a>.</p>
+        <pre id="draft-text"></pre>
+        <p><button class="plan" type="button" id="copy-enquiry">Copy enquiry</button></p>
+        <p id="copy-status" role="status"></p>
+      </div>
     </main>
     <footer>
       <div class="wrap">
@@ -85,46 +82,13 @@
         <p>Anglers Retreat · Baruah Chuk, Kaliabor, Assam</p>
         <nav class="links" aria-label="Footer">
           <a href="stay.html">Stay</a>
-          <a href="day.html">The day</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="about.html">About</a>
-          <a href="visit.html">Visit</a>
-          <a href="book.html">Book</a>
+          <a href="day.html">Day visits</a>
+          <a href="visit.html">Plan your visit</a>
+          <a href="book.html">Enquire</a>
         </nav>
       </div>
     </footer>
-    <script>
-      const form = document.querySelector("#book-form");
-      const error = document.querySelector("#form-error");
-      const sent = document.querySelector("#sent");
-      const params = new URLSearchParams(location.search);
-
-      if (params.get("tent") === "1") form.querySelector('input[value="Tent"]').checked = true;
-      if (params.get("fishing") === "1") form.querySelector('input[value="Fishing"]').checked = true;
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const data = new FormData(form);
-        const wants = [...form.querySelectorAll('input[name="want"]:checked')].map((box) => box.value);
-        if (!wants.length) {
-          error.hidden = false;
-          return;
-        }
-        error.hidden = true;
-        const people = data.get("people");
-        const lines = [
-          "Name: " + data.get("name"),
-          "Phone: " + data.get("phone"),
-          "Date: " + data.get("date"),
-          "People: " + (people || "not given"),
-          "Request: " + wants.join(", "),
-          "Note: " + (data.get("note") || "—"),
-        ];
-        const body = lines.join("\n");
-        sent.hidden = false;
-        sent.textContent = "Your email app should open with these details. If it does not, call 98640 50153 and read them out. " + body.replaceAll("\n", " ");
-        location.href = "mailto:jalashreeanglersretreat@gmail.com?subject=" + encodeURIComponent("Tent / fishing request") + "&body=" + encodeURIComponent(body);
-      });
-    </script>
+    <script src="contact.js"></script>
+    <script src="site.js"></script>
   </body>
 </html>
